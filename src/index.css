@@ -69,7 +69,6 @@
     cursor: pointer;
     display: inline-flex;
     align-items: center;
-    gap: 0.25rem;
   }
 
   .status-dropdown [data-state="open"] {

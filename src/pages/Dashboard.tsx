@@ -115,17 +115,7 @@ const Dashboard = () => {
 };
 
 const CampaignRow = ({ campaign }: { campaign: Campaign }) => {
-  const navigate = useNavigate();
   const { updateCampaignStatus } = useCampaigns();
-
-  const handleRowClick = (e: React.MouseEvent) => {
-    // Prevent navigation when clicking the status dropdown
-    if ((e.target as HTMLElement).closest('.status-dropdown')) {
-      e.stopPropagation();
-      return;
-    }
-    navigate(`/campaigns/${campaign.id}`);
-  };
 
   // Format date
   const formattedDate = format(
@@ -134,10 +124,7 @@ const CampaignRow = ({ campaign }: { campaign: Campaign }) => {
   );
 
   return (
-    <TableRow
-      className="cursor-pointer hover:bg-muted/50"
-      onClick={handleRowClick}
-    >
+    <TableRow>
       <TableCell>
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded overflow-hidden flex-shrink-0">
@@ -161,9 +148,12 @@ const CampaignRow = ({ campaign }: { campaign: Campaign }) => {
       <TableCell>
         <div className="status-dropdown">
           <DropdownMenu>
-            <DropdownMenuTrigger className={`flex items-center gap-1 ${
+            <DropdownMenuTrigger className={`flex items-center gap-2 ${
               campaign.status === 'Live' ? 'status-live' : 'status-pending'
             }`}>
+              <span className={`w-2 h-2 rounded-full ${
+                campaign.status === 'Live' ? 'bg-green-600' : 'bg-orange-600'
+              }`} />
               {campaign.status}
               <ChevronDown className="h-4 w-4" />
             </DropdownMenuTrigger>
@@ -172,15 +162,17 @@ const CampaignRow = ({ campaign }: { campaign: Campaign }) => {
                 onClick={() => updateCampaignStatus(campaign.id, 'Live')}
                 className="flex items-center gap-2"
               >
-                {campaign.status === 'Live' && <Check className="h-4 w-4" />}
+                <span className="w-2 h-2 rounded-full bg-green-600" />
                 Live
+                {campaign.status === 'Live' && <Check className="h-4 w-4 ml-auto" />}
               </DropdownMenuItem>
               <DropdownMenuItem 
                 onClick={() => updateCampaignStatus(campaign.id, 'Pending')}
                 className="flex items-center gap-2"
               >
-                {campaign.status === 'Pending' && <Check className="h-4 w-4" />}
+                <span className="w-2 h-2 rounded-full bg-orange-600" />
                 Pending
+                {campaign.status === 'Pending' && <Check className="h-4 w-4 ml-auto" />}
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
