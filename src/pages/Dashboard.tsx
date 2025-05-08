@@ -116,6 +116,15 @@ const Dashboard = () => {
 
 const CampaignRow = ({ campaign }: { campaign: Campaign }) => {
   const { updateCampaignStatus } = useCampaigns();
+  const navigate = useNavigate();
+
+  const handleRowClick = (e: React.MouseEvent) => {
+    // Check if the click originated from the status dropdown
+    const isStatusDropdown = (e.target as HTMLElement).closest('.status-dropdown');
+    if (!isStatusDropdown) {
+      navigate(`/campaigns/${campaign.id}`);
+    }
+  };
 
   // Format date
   const formattedDate = format(
@@ -123,8 +132,15 @@ const CampaignRow = ({ campaign }: { campaign: Campaign }) => {
     'MMM d, yyyy'
   );
 
+  const handleStatusClick = (e: React.MouseEvent) => {
+    e.stopPropagation(); // Stop event from bubbling up to the row
+  };
+
   return (
-    <TableRow>
+    <TableRow 
+      className="cursor-pointer hover:bg-muted/50"
+      onClick={handleRowClick}
+    >
       <TableCell>
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded overflow-hidden flex-shrink-0">
@@ -145,7 +161,8 @@ const CampaignRow = ({ campaign }: { campaign: Campaign }) => {
           </div>
         </div>
       </TableCell>
-      <TableCell>
+      
+      <TableCell onClick={handleStatusClick}>
         <div className="status-dropdown">
           <DropdownMenu>
             <DropdownMenuTrigger className={`flex items-center gap-2 ${
