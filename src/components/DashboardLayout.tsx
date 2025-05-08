@@ -1,4 +1,3 @@
-
 import { ReactNode } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '@/contexts/AuthContext';
@@ -6,9 +5,8 @@ import { Button } from '@/components/ui/button';
 import { 
   LayoutDashboard, 
   PlusCircle, 
-  Settings, 
-  LogOut,
-  BarChart
+  BarChart,
+  LogOut
 } from 'lucide-react';
 
 interface DashboardLayoutProps {
@@ -45,7 +43,7 @@ const DashboardLayout = ({ children }: DashboardLayoutProps) => {
       </header>
 
       {/* Main content */}
-      <div className="flex flex-1">
+      <div className="flex-1 flex">
         {/* Sidebar */}
         <aside className="hidden md:flex w-60 flex-col bg-white border-r border-border p-4">
           <nav className="space-y-2">
@@ -73,10 +71,6 @@ const DashboardLayout = ({ children }: DashboardLayoutProps) => {
               <BarChart className="h-4 w-4 mr-2" />
               Analytics
             </Button>
-            <Button variant="ghost" className="w-full justify-start">
-              <Settings className="h-4 w-4 mr-2" />
-              Settings
-            </Button>
           </nav>
         </aside>
 
@@ -89,6 +83,10 @@ const DashboardLayout = ({ children }: DashboardLayoutProps) => {
           <Button variant="outline" size="sm" onClick={() => navigate('/campaigns/create')}>
             <PlusCircle className="h-4 w-4 mr-2" />
             Create Campaign
+          </Button>
+          <Button variant="outline" size="sm" onClick={() => navigate('/analytics')}>
+            <BarChart className="h-4 w-4 mr-2" />
+            Analytics
           </Button>
         </div>
 

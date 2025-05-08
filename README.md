@@ -1,73 +1,139 @@
-# Welcome to your Lovable project
+# 🚀 AdScribe - AI-Powered Advertising Dashboard
 
-## Project info
+Welcome to AdScribe, a modern advertising campaign management platform!  
+This project demonstrates a sleek **Advertising Campaign Dashboard**, built with **React**, **Tailwind CSS**, and powered by **AI** using the lightweight `tinydolphin` model via **Ollama**.  
 
-**URL**: https://lovable.dev/projects/49f3a200-56fa-46a6-b08b-3998bcfe5752
+Create, manage, and analyze your ad campaigns with an intuitive interface and AI-powered copywriting assistance. 🎯
 
-## How can I edit this code?
+## ⚡ Features
 
-There are several ways of editing your application.
+- 🔐 Secure Authentication System (Mock for Demo purposes)
+- 📊 Interactive Analytics Dashboard with:
+  - Campaign Performance Metrics
+  - Location Distribution Charts
+  - Click-Through Rate Analysis
+- 🎯 Campaign Management:
+  - Create & View Campaigns
+  - Target Audience Selection
+  - Image Banner Upload Support
+- 🤖 AI-Powered Ad Copy Generation
+- 📱 Responsive Design for Mobile & Desktop
 
-**Use Lovable**
+## 🛠️ Tech Stack
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/49f3a200-56fa-46a6-b08b-3998bcfe5752) and start prompting.
+- **Frontend:**
+  - React + TypeScript
+  - Tailwind CSS
+  - Shadcn/ui Components
+  - React Router for Navigation
+  - React Query for Data Management
+  - Recharts for Analytics Visualization
+- **AI Integration:**
+  - Ollama for Local AI Inference
+  - Tinydolphin Model for Ad Copy Generation
+- **Data Storage:**
+  - LocalStorage for Data Persistence
+  - Context API for State Management
 
-Changes made via Lovable will be committed automatically to this repo.
+## ⚙️ Installation & Setup
 
-**Use your preferred IDE**
+### Prerequisites
+- Node.js 16+
+- npm or yarn
+- Ollama (for AI features)
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### 1. Clone the Repository
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+```bash
+git clone https://github.com/cyborgsuh/ad-scribe-dashboard-ai.git
+cd ad-scribe-dashboard-ai
 ```
 
-**Edit a file directly in GitHub**
+### 2. Install Dependencies
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+```bash
+npm install
+# or
+yarn install
+```
 
-**Use GitHub Codespaces**
+### 3. Run the Development Server
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+```bash
+npm run dev
+# or
+yarn dev
+```
 
-## What technologies are used for this project?
+Access the app at http://localhost:8080
 
-This project is built with:
+## 🤖 Setting Up AI Features
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+The AI ad copy generation requires Ollama running locally:
 
-## How can I deploy this project?
+### 1. Install Ollama
+Download and install from [ollama.com/download](https://ollama.com/download)
 
-Simply open [Lovable](https://lovable.dev/projects/49f3a200-56fa-46a6-b08b-3998bcfe5752) and click on Share -> Publish.
+### 2. Start Ollama Server
+```bash
+ollama serve
+```
 
-## Can I connect a custom domain to my Lovable project?
+### 3. Install Tinydolphin Model
+```bash
+ollama pull tinydolphin
+```
 
-Yes, you can!
+## 🎮 Usage Guide
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+1. **Login:**
+   - Use any email/password (mock authentication)
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+2. **Create Campaign:**
+   - Click "Create Campaign" in sidebar
+   - Fill in campaign details
+   - Use AI to generate ad copy
+   - Upload banner image (URL)
+   - Set targeting options
+
+3. **View Analytics:**
+   - See campaign performance
+   - Interactive charts and metrics
+   - Location distribution analysis
+
+4. **Manage Campaigns:**
+   - View all campaigns on dashboard
+   - Click to see detailed metrics
+   - Track impressions and CTR
+
+## 💡 Implementation Details
+
+- **Authentication:** Mock system using React Context
+- **Routing:** Protected routes with React Router
+- **State Management:** Context API for campaigns and auth
+- **UI Components:** Shadcn/ui for consistent design
+- **Analytics:** Real-time charts with Recharts
+- **AI Integration:** Local Ollama server with Tinydolphin model
+
+## ⚠️ Important Notes
+
+- This is a demo application - data persists in LocalStorage
+- AI features require Ollama running locally
+- For best experience, run locally (not deployed)
+
+## 🙌 Contact
+
+**Mohammed Suhaib**  
+📧 mosuh64@gmail.com  
+📱 +971 55 7833 261
+
+## 🚀 Future Enhancements
+
+- Backend Integration with Node.js/Express
+- Real Authentication with JWT
+- Database Integration (PostgreSQL/MongoDB)
+- Real-time Analytics with WebSocket
+- Campaign A/B Testing
+- Advanced AI Features with GPT-4
+- Email Notifications
+- Multi-user Support with Roles

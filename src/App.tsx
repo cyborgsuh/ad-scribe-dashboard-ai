@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -9,6 +8,7 @@ import { CampaignProvider } from "./contexts/CampaignContext";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import CampaignCreate from "./pages/CampaignCreate";
+import CampaignDetail from "./pages/CampaignDetail";
 import Analytics from "./pages/Analytics";
 import NotFound from "./pages/NotFound";
 
@@ -47,6 +47,11 @@ const App = () => (
               <Route path="/campaigns/create" element={
                 <ProtectedRoute>
                   <CampaignCreate />
+                </ProtectedRoute>
+              } />
+              <Route path="/campaigns/:id" element={
+                <ProtectedRoute>
+                  <CampaignDetail />
                 </ProtectedRoute>
               } />
               <Route path="/analytics" element={
