@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -63,5 +62,17 @@
 
   .status-pending {
     @apply text-orange-600 bg-orange-100 px-2 py-1 rounded-full text-xs font-medium;
+  }
+
+  .status-dropdown button {
+    all: unset;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  .status-dropdown [data-state="open"] {
+    opacity: 0.8;
   }
 }

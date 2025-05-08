@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useCampaigns, Campaign } from '@/contexts/CampaignContext';
@@ -14,8 +13,14 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
-import { PlusCircle, Search } from 'lucide-react';
+import { PlusCircle, Search, Check, ChevronDown } from 'lucide-react';
 import { format } from 'date-fns';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 const Dashboard = () => {
   const { campaigns } = useCampaigns();
@@ -111,6 +116,16 @@ const Dashboard = () => {
 
 const CampaignRow = ({ campaign }: { campaign: Campaign }) => {
   const navigate = useNavigate();
+  const { updateCampaignStatus } = useCampaigns();
+
+  const handleRowClick = (e: React.MouseEvent) => {
+    // Prevent navigation when clicking the status dropdown
+    if ((e.target as HTMLElement).closest('.status-dropdown')) {
+      e.stopPropagation();
+      return;
+    }
+    navigate(`/campaigns/${campaign.id}`);
+  };
 
   // Format date
   const formattedDate = format(
@@ -121,7 +136,7 @@ const CampaignRow = ({ campaign }: { campaign: Campaign }) => {
   return (
     <TableRow
       className="cursor-pointer hover:bg-muted/50"
-      onClick={() => navigate(`/campaigns/${campaign.id}`)}
+      onClick={handleRowClick}
     >
       <TableCell>
         <div className="flex items-center gap-3">
@@ -144,9 +159,32 @@ const CampaignRow = ({ campaign }: { campaign: Campaign }) => {
         </div>
       </TableCell>
       <TableCell>
-        <span className={campaign.status === 'Live' ? 'status-live' : 'status-pending'}>
-          {campaign.status}
-        </span>
+        <div className="status-dropdown">
+          <DropdownMenu>
+            <DropdownMenuTrigger className={`flex items-center gap-1 ${
+              campaign.status === 'Live' ? 'status-live' : 'status-pending'
+            }`}>
+              {campaign.status}
+              <ChevronDown className="h-4 w-4" />
+            </DropdownMenuTrigger>
+            <DropdownMenuContent>
+              <DropdownMenuItem 
+                onClick={() => updateCampaignStatus(campaign.id, 'Live')}
+                className="flex items-center gap-2"
+              >
+                {campaign.status === 'Live' && <Check className="h-4 w-4" />}
+                Live
+              </DropdownMenuItem>
+              <DropdownMenuItem 
+                onClick={() => updateCampaignStatus(campaign.id, 'Pending')}
+                className="flex items-center gap-2"
+              >
+                {campaign.status === 'Pending' && <Check className="h-4 w-4" />}
+                Pending
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </div>
       </TableCell>
       <TableCell>{formattedDate}</TableCell>
       <TableCell>

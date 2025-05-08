@@ -1,4 +1,3 @@
-
 import { createContext, useContext, useState, ReactNode, useEffect } from 'react';
 import { useToast } from '@/components/ui/use-toast';
 
@@ -19,10 +18,10 @@ export interface Campaign {
 interface CampaignContextType {
   campaigns: Campaign[];
   addCampaign: (campaign: Omit<Campaign, 'id' | 'dateCreated' | 'status' | 'impressions' | 'clickThroughRate'>) => void;
-  getCampaign: (id: string) => Campaign | undefined;
+  updateCampaignStatus: (id: string, status: 'Live' | 'Pending') => void; // Add this line
 }
 
-const CampaignContext = createContext<CampaignContextType>({} as CampaignContextType);
+const CampaignContext = createContext<CampaignContextType | undefined>(undefined);
 
 export const useCampaigns = () => useContext(CampaignContext);
 
@@ -63,6 +62,12 @@ export const CampaignProvider = ({ children }: { children: ReactNode }) => {
     return newCampaign;
   };
 
+  const updateCampaignStatus = (id: string, status: 'Live' | 'Pending') => {
+    setCampaigns(campaigns.map(campaign => 
+      campaign.id === id ? { ...campaign, status } : campaign
+    ));
+  };
+
   const getCampaign = (id: string) => {
     return campaigns.find(campaign => campaign.id === id);
   };
@@ -70,6 +75,7 @@ export const CampaignProvider = ({ children }: { children: ReactNode }) => {
   const value = {
     campaigns,
     addCampaign,
+    updateCampaignStatus, // Add this line
     getCampaign,
   };
 
