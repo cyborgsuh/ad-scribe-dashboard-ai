@@ -41,6 +41,20 @@ Create, manage, and analyze your ad campaigns with an intuitive interface and AI
   - LocalStorage for Data Persistence
   - Context API for State Management
 
+## 🏗️ How It Was Built
+
+- 🧠 Brainstorming & prompt generation with ChatGPT
+
+- 🎨 Frontend UI created using Lovable (prompt-based UI builder)
+
+- 💻 Project cloned and polished using Cursor for:
+
+    - Debugging
+
+    - Functional improvements
+
+    - Code cleanup and enhancements
+
 ## ⚙️ Installation & Setup
 
 ### Prerequisites
