@@ -5,6 +5,12 @@ This project demonstrates a sleek **Advertising Campaign Dashboard**, built with
 
 Create, manage, and analyze your ad campaigns with an intuitive interface and AI-powered copywriting assistance. 🎯
 
+## 🌐 Live Demo
+
+**Demo Link:** [https://alemx-ad-scribe.netlify.app](https://alemx-ad-scribe.netlify.app)
+
+> ⚠️ **Important Note:** The live demo does not include AI copywriting features as Ollama requires local installation. For full functionality including AI features, please clone and run the project locally following the setup instructions below.
+
 ## ⚡ Features
 
 - 🔐 Secure Authentication System (Mock for Demo purposes)
